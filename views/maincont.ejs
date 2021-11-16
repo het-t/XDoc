@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.Dr.</title>
+</head>
+<body>
+<div class="wrapper">
+    
+    <div id="account">
+        <div class="logo"><img src="" alt=""></div>
+        <div class="account-info">
+            <p><%= email%></p>
+            <p><%= username%></p>
+        </div>
+        
+        </div>
+    <div id="border1"></div>
+
+    <div class="menu-record">
+        <div id="menu">
+            <ul id="main-nav">
+                <li><a href="/newPatient">New Patient</a></li>
+
+                <li><a href="/Profile">Profile</a></li>
+                <li><a href="/lastPatient">Last Patient</a></li>
+                <li><a href="/statastics">Stats</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+            <div id="border2"></div>
+        </div>
+    
+        
+
+        <div id="record">
+
+            <form action="" method="GET">
+                <label for="pname">Patient Name &nbsp;:&nbsp;</label>
+                <input type="text" id="pname">
+                
+                <label for="disease">Disease &nbsp;:&nbsp;</label>
+                <input type="text" id="disease">
+                
+              
+                <label for="age">Patient Age &nbsp;:&nbsp;</label>
+                <input type="number" id="age">
+                
+                <label for="visit">Visit Index &nbsp;:&nbsp;</label>
+                <input type="number" id="visit">
+
+                
+                <label for="cure">Treatment &nbsp;:&nbsp;</label>
+                <textarea id="cure" cols="50" rows="10"></textarea>
+
+                <label for="last-visit">Last Visit &nbsp;:&nbsp;</label>
+                <input type="date" id="last-visit">
+                
+                <label for="next-visit">Next Visit &nbsp;:&nbsp;</label>
+                <input type="date" id="next-visit">
+
+
+                <div id="form-btn">
+                    <button id="erase" type="reset">Erase</button>
+
+                    <button id="submit" type="submit">Save</button>
+                </div>
+
+            </form>
+        
+
+        </div>
+    </div>
+</div>
+    <link rel="javascript/text" href="./uijs/script.js">
+</body>
+</html>

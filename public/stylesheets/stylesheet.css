@@ -1,0 +1,167 @@
+body {
+    margin:80px auto;
+    padding:0px;
+    width:70%;
+    height: 490px;
+    font-family: 'Lato', sans-serif;
+    background-color:rgb(218, 218, 218);
+    color:rgb(53, 53, 53);
+}
+.wrapper {
+    background-color:white;
+    border:1px solid white ;
+    border-radius:6px;
+    box-shadow:5px 5px 10px 1px rgb(119, 119, 119);
+}
+* {
+    scrollbar-width: thin;
+}
+
+/* account section */
+#account {
+    box-sizing:border-box;
+    height:50px;
+    width:100%;
+    background-color:white;
+    display:grid;
+    grid-template-columns: 35% 65%;
+    padding:18px 16px 4px 16px;
+}
+.account-info>p {
+    font-size:10px;
+    margin:0 55px;
+    padding:0;
+    font-weight:700;
+}
+#border1 {
+    margin-top:5px;
+    border-top: solid rgb(226, 226, 226) 2px;
+    position:absolute;
+    right:20%;
+    left:16%;
+}
+.account-info {
+    text-align:right;
+}
+/* menu-record class helps to keep menu and record as intented */
+.menu-record {
+    display:flex;
+    width:100%;
+    height:450px;
+}
+#border2 {
+    border-right:solid rgb(226, 226, 226) 2px;
+    padding-right:30px;
+}
+
+/* main nav start here */
+#menu {
+    width:30%;
+    box-sizing: border-box;
+    padding-top:30px;
+    background-color:white;
+    padding-bottom:30px;
+    display: flex;;
+}
+#main-nav {
+    background-color:white;
+    list-style-type: none;
+    margin:0;
+}
+#main-nav li{
+    margin:40px 0px;
+    padding:2px 0px;
+    margin-right:11px;
+    font-size:16px;
+    width:fit-content;
+}
+#main-nav>li:hover{  
+    font-size:18px;
+    padding:0.5px 0px;
+    margin-right:0px;
+}
+a:hover{
+    color:black;
+}
+a {
+    text-decoration:none;
+    color:rgb(53, 53, 53);
+    font-weight:400;
+    width: 100%;
+}
+
+/* records start from here */
+#record {
+    background-color:white;
+    width:70%;
+    height:72%;
+    padding:0 60px;
+    margin-top:40px;
+    overflow:scroll;
+    overflow-x:hidden;
+    scrollbar-width: thin;
+}
+form {
+    display:grid;
+    grid-template-columns: max-content max-content;
+    font-size:16px;
+}
+label {
+    text-align:right;
+    margin:20px 0;
+}
+input {
+    box-sizing:border-box;
+    margin:15px 0;
+    font-family: 'Lato', sans-serif;
+    padding:5px 10px;
+    font-size:16px;
+}
+textarea {
+    font-family: 'Lato', sans-serif;
+    padding:15px 20px;
+    font-size:16px;
+}
+#cure {
+    overflow:scroll;
+    scrollbar-width: thin;
+    scrollbar-color: black;
+}
+
+#age , #visit {
+    width:30%;
+}
+#form-btn {
+    display:flex;
+    justify-content:space-around;
+    grid-column-start:2;
+    grid-column-end:3;
+}
+#erase , #submit {
+    width:100px;
+    height:30px;
+    margin-top:50px;
+    border:0;
+    cursor:pointer;
+    color:rgb(252, 252, 252);
+    font-size:16px;
+    border-radius:25px;
+}
+#submit {
+    background-color:green;
+}
+#erase {
+    background-color:red;
+}
+#submit:hover , #erase:hover {
+    background-color:white;
+    border:solid 1px ;
+}
+#submit:hover {
+    border-color:green;
+    color:green;
+}
+#erase:hover {
+    border-color:red;
+    color:red;
+}

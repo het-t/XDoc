@@ -24,19 +24,20 @@ dbConnection.connect(function(err) {
 var username, password;
 var userInfoArray = [username, password]
 const registrationQuery =  `CALL registration_entry(?, ?)`
-const loginQuery = `CALL login(?, ?)`
+const loginQuery = `CALL newlogin(?, ?)`
 
 
 function userRegistration (userInfoArray){
     dbConnection.query( registrationQuery, userInfoArray, function(err, results, fields) {
         if (err) throw err
-        console.log(results[0])
+        console.log("user registration took place successfully")
     })
 }
 function userLogin (userInfoArray){
     dbConnection.query( loginQuery, userInfoArray, function(err, results, fields) {
         if (err) throw err
         console.log(results[0])
+        console.log("user login took place successfully")
     })
 }
 

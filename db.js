@@ -36,8 +36,10 @@ function userRegistration (userInfoArray){
 function userLogin (userInfoArray){
     dbConnection.query( loginQuery, userInfoArray, function(err, results, fields) {
         if (err) throw err
-        console.log(results[0])
-        console.log("user login took place successfully")
+        if (results) {
+            console.log(results[0])
+            console.log("user login took place successfully")
+        }
     })
 }
 

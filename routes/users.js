@@ -38,18 +38,21 @@ router.post('/login', (req, res, next) => {
   form.parse(req, function(err, fields, files) {
     var userInfoArray = [fields.username, fields.password]
     db.userLogin(userInfoArray).then(
-      ()=>{
+      function () {
         next()
       },
-      ()=>{
-        console.log('promise rejected')
+      function () {
+        console.log('enter valid username and/or password')
+        res.redirect('/webpages/register.html')
       }
     ).catch (
-      console.log('wrong in promise')
+        function (err) {
+          console.log('wrong in promise')
+        }
     )
   })
 },(req, res, next)=> {
-  res.redirect('maincont',[user.username, user.email])
+  res.render('maincont',user)
 })
 
 

@@ -38,16 +38,11 @@ function userLogin (userInfoArray){
     var loginResults;
     dbConnection.query( loginQuery, userInfoArray, function(err, results, fields) {
         if (err) throw err
-        console.log(results)
         loginResults = results
-        console.log(loginResults)
-
     })    
 
-    // loginResults[0][0].username && loginResults[0][0].password
-
     return new Promise(function (resolve, reject){
-        if (true) {
+        if (loginResults[0][0].username && loginResults[0][0].password) {
             resolve()
         } else {
             reject()

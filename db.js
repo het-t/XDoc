@@ -1,6 +1,4 @@
 const db = require('mysql')
-// const express = require('express')
-// const app = express()
 
 const dbConnection = db.createConnection({
     host     : 'localhost',
@@ -37,11 +35,12 @@ function userLogin (userInfoArray){
     dbConnection.query( loginQuery, userInfoArray, function(err, results, fields) {
         if (err) throw err
         if (results) {
-            console.log(results[0])
+            userInfoArray[0] = results[0][0].username
             console.log("user login took place successfully")
         }
     })
 }
 
+module.exports.userInfoArray = userInfoArray;
 module.exports.userRegistration = userRegistration;
 module.exports.userLogin = userLogin; 

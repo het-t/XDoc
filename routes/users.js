@@ -37,10 +37,20 @@ router.post('/login', (req, res, next) => {
   const form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
     var userInfoArray = [fields.username, fields.password]
-    db.userLogin(userInfoArray)
-    res.end()
+    db.userLogin(userInfoArray).then(
+      ()=>{
+        next()
+      },
+      ()=>{
+        console.log('promise rejected')
+      }
+    ).catch (
+      console.log('wrong in promise')
+    )
   })
-});
+},(req, res, next)=> {
+  res.redirect('maincont',[user.username, user.email])
+})
 
 
 module.exports = router

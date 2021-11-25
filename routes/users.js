@@ -37,11 +37,14 @@ router.post('/login', (req, res, next) => {
   const form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
     var userInfoArray = [fields.username, fields.password]
-    db.userLogin(userInfoArray).then(
-      function () {
-        next()
+ db.userLogin(userInfoArray).then(
+      () => {
+        user.username = fields.username;
+        user.email = fields.password;
+        console.log('valid login')
+        next();
       },
-      function () {
+      () => {
         console.log('enter valid username and/or password')
         res.redirect('/webpages/register.html')
       }
@@ -51,7 +54,7 @@ router.post('/login', (req, res, next) => {
         }
     )
   })
-},(req, res, next)=> {
+},(req, res, next) => {
   res.render('maincont',user)
 })
 

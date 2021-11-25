@@ -35,19 +35,18 @@ function userRegistration (userInfoArray){
     })
 }
 function userLogin (userInfoArray){
-    var loginResults;
-    dbConnection.query( loginQuery, userInfoArray, function(err, results, fields) {
-        if (err) throw err
-        loginResults = results
-    })    
-
-    return new Promise(function (resolve, reject){
-        if (loginResults[0][0].username && loginResults[0][0].password) {
-            resolve()
-        } else {
-            reject()
+    
+    return new Promise (
+        (resolve, reject) => {
+            dbConnection.query( loginQuery, userInfoArray, (err, results, fields)=> {
+            if (err) console.log(err)
+            if (results?.[0]?.[0]?.username && results?.[0]?.[0]?.password) {
+                resolve()
+            } else {
+                reject()
+            }
         }
-    })
+    )}) 
 };
 
 

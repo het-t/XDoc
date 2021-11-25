@@ -49,6 +49,5 @@ function userLogin (userInfoArray){
     )}) 
 };
 
-
 module.exports.userRegistration = userRegistration;
 module.exports.userLogin = userLogin; 

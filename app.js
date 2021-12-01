@@ -1,6 +1,7 @@
 //routes modules from routes folder
-const userRoutes = require('./routes/users')
 const indexRoutes = require('./routes/index')
+const userRoutes = require('./routes/users')
+const mainContRoutes = require('./routes/maincontent')
 
 //script for db handling 
 const db = require('./db.js')
@@ -19,22 +20,13 @@ app.use(express.static(__dirname + '/public'))
 
 
 //mounting index and user routers
-app.use('/', indexRoutes)
 app.use('/user', userRoutes)
+app.use('/', indexRoutes)
+// app.use('/user', mainContRoutes)
+
 
 
 //creating server 
 app.listen(3030, () => {
     console.log("server is running")
 })
-
-
-
-
-
-
-
-
-
-
-

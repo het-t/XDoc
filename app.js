@@ -1,16 +1,16 @@
 //routes modules from routes folder
-const indexRoutes = require('./routes/index')
-const userRoutes = require('./routes/users')
-const mainContRoutes = require('./routes/maincontent')
+const indexRoutes = require('./routes/index.js')
+const userRoutes = require('./routes/users.js')
+const mainContRoutes = require('./routes/maincontent.js')
 
 //script for db handling 
 const db = require('./db.js')
 
 
-const express = require('express')
-const path = require('path')
+const express = require('express');
+const path = require('path');
 
-const app = express()
+const app = express();
 
 //setting view engine 
 app.set('views', path.join(__dirname, 'views'))
@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'))
 //mounting index and user routers
 app.use('/user', userRoutes)
 app.use('/', indexRoutes)
-// app.use('/user', mainContRoutes)
+app.use('/user', mainContRoutes)
 
 
 

@@ -1,10 +1,11 @@
-var express = require('express')
+var express = require('express');
 const jwt = require('jsonwebtoken')
+
 var router = express.Router()
 
 var secret = "dr.server"
 
-router.get('/new-record', (req, res) => {
+router.get('/new-record', function (req, res, next) {
     jwt.verify(req.token, secret, (err, authorizedData)=>{
         if(err) console.log("token reading failed manually")
         else {
@@ -17,4 +18,4 @@ router.get('/new-record', (req, res) => {
     })
 })
 
-module.export = router ;
+module.exports = router ;

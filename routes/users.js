@@ -13,6 +13,7 @@ var user = {
   email:'',
   token:''
 }
+
 const secret = "dr.server"
 
 router.get('/register', function (req, res) {
@@ -24,6 +25,7 @@ router.get('/login', function (req, res) {
 })
 
 router.get('/mainContent', function(req, res, next) {
+  console.log(req.header[token]) 
   res.render('maincont', user)
 })
 
@@ -43,15 +45,15 @@ router.post('/login', (req, res, next) => {
     var userInfoArray = [fields.username, fields.password]
   db.userLogin(userInfoArray).then(
       () => {
+        console.log(userInfoArray)
         user.username = fields.username;
         user.email = fields.password;
-        ()=>{
-          const token = jwt.sign(user, secret, (err, token)=> {
-            console.log(token)
-          })
-          user.token = token;
-          res.setHeader(token, token)
+        var payload = {
+          username:user.username,
+          email:user.email
         }
+        var token = jwt.sign(payload, secret)
+        user.token = token
         console.log('valid login')
         next();
       },
@@ -67,9 +69,12 @@ router.post('/login', (req, res, next) => {
         }
     )
   })
+  
 },(req, res, next) => {
-  res.render('maincont',user)
-})
+    res.cookie('token', user.token)
+    res.render('maincont',user)
+  }
+)
 
 module.exports = router;
-module.exports.user = user;
+// module.exports.user = user;

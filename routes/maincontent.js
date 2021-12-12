@@ -5,8 +5,8 @@ var router = express.Router()
 
 var secret = "dr.server"
 
-router.get('/new-record', function (req, res, next) {
-    jwt.verify(req.token, secret, (err, authorizedData)=>{
+router.get('/record', function (req, res, next) {
+    jwt.verify(req.cookies.token, secret, (err, authorizedData)=>{
         if(err) console.log("token reading failed manually")
         else {
             res.json({

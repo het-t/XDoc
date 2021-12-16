@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'))
 //mounting index and user routers
 app.use('/user', userRoutes)
 app.use('/', indexRoutes)
-app.use('/user', mainContRoutes)
+// app.use('/user', mainContRoutes)
 
 
 

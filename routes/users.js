@@ -24,9 +24,22 @@ router.get('/login', function (req, res) {
   res.sendFile(path.join(__dirname ,'../public', '/webpages/login.html'))
 })
 
-router.get('/mainContent', function(req, res, next) {
-  console.log(req.header[token]) 
-  res.render('maincont', user)
+router.post('/record', function(req, res, next) {
+  const form = formidable();
+  form.parse(req, function (err, fields, files) {
+    const record = {
+      "patientName":fields.pname, 
+      "disease":fields.disease, 
+      "age":fields.age, 
+      "visit":fields.visit, 
+      "cure":fields.cure, 
+      "lastVisit":fields.lvisit, 
+      "nextVisit":fields.nvisit
+    };
+    console.log(record)
+    if (fields) res.render('maincont', user)
+  })
+  
 })
 
 router.post('/register', (req, res, next) => {
@@ -34,8 +47,8 @@ router.post('/register', (req, res, next) => {
   form.parse(req, function(err, fields, files) {
     var userInfoArray = [fields.username, fields.password]
     db.userRegistration(userInfoArray)
-    res.end()
   })
+  res.redirect('/webpages/login.html')
 });
 
 router.post('/login', (req, res, next) => {

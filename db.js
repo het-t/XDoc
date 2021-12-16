@@ -1,6 +1,7 @@
 var db = require('mysql')
 var http = require('http')
 var express = require('express')
+const res = require('express/lib/response')
 var app = express()
 
 const dbConnection = db.createConnection({

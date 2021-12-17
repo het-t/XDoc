@@ -1,10 +1,10 @@
 //routes modules from routes folder
 const indexRoutes = require('./routes/index.js')
-const userRoutes = require('./routes/users.js')
+const userRoutes = require('./routes/users.js').router
 const mainContRoutes = require('./routes/maincontent.js')
 
 //script for db handling 
-const db = require('./db.js')
+const db = require('./scripts/db.js')
 
 
 const express = require('express');

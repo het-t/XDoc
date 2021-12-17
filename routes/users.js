@@ -1,8 +1,9 @@
 var express = require('express');
 const jwt = require('jsonwebtoken')
 const formidable = require('formidable')
-const db = require('../db.js')
+const db = require('../scripts/db.js')
 const path = require('path');
+var recordEntry = require('../scripts/recordEntry').entry
 
 var router = express.Router();
 
@@ -15,6 +16,7 @@ var user = {
 }
 
 const secret = "dr.server"
+var record;
 
 router.get('/register', function (req, res) {
   res.sendFile(path.join(__dirname ,'../public', '/webpages/register.html'))
@@ -27,7 +29,7 @@ router.get('/login', function (req, res) {
 router.post('/record', function(req, res, next) {
   const form = formidable();
   form.parse(req, function (err, fields, files) {
-    const record = {
+    record = {
       "patientName":fields.pname, 
       "disease":fields.disease, 
       "age":fields.age, 
@@ -36,8 +38,13 @@ router.post('/record', function(req, res, next) {
       "lastVisit":fields.lvisit, 
       "nextVisit":fields.nvisit
     };
-    console.log(record)
-    if (fields) res.render('maincont', user)
+    const recordArray = Object.entries(record);
+    recordEntry(recordArray)
+    //.then(
+    //   ()=>res.render('maincont',user),
+    //   (err)=>console.log(err)
+    // )
+    res.render('maincont', user)
   })
   
 })
@@ -89,5 +96,6 @@ router.post('/login', (req, res, next) => {
   }
 )
 
-module.exports = router;
+module.exports.router = router;
+module.exports.reocrd = record;
 // module.exports.user = user;

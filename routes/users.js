@@ -29,16 +29,16 @@ router.get('/login', function (req, res) {
 router.post('/record', function(req, res, next) {
   const form = formidable();
   form.parse(req, function (err, fields, files) {
-    record = {
-      "patientName":fields.pname, 
-      "disease":fields.disease, 
-      "age":fields.age, 
-      "visit":fields.visit, 
-      "cure":fields.cure, 
-      "lastVisit":fields.lvisit, 
-      "nextVisit":fields.nvisit
-    };
-    const recordArray = Object.entries(record);
+    console.log(fields)
+    var recordArray = [{
+      pname:fields.pname,
+      disease:fields.disease, 
+      age:fields.age, 
+      visit:fields.visit, 
+      cure:fields.cure, 
+      lvisit:fields.lvisit, 
+      nvisit:fields.nvisit
+    }];
     recordEntry(recordArray)
     //.then(
     //   ()=>res.render('maincont',user),
@@ -97,5 +97,3 @@ router.post('/login', (req, res, next) => {
 )
 
 module.exports.router = router;
-module.exports.reocrd = record;
-// module.exports.user = user;

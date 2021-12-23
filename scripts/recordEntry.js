@@ -1,20 +1,33 @@
 var fs = require("fs");
-const fastcsv = require("fast-csv")
-const { format } = require('@fast-csv/format');
-const { writeToPath  } = require('@fast-csv/format');
 const path = require('path');
-
-const record = require('../routes/users').record;
-
-const wStream = fs.createWriteStream("../records.csv", {flags:"a"});
-const stream = format();
-stream.pipe(wStream);
-
-
-var entry = (data) => {
-    writeToPath(path.resolve(__dirname, '../records.csv'), data)
-    .on('error', err => console.error(err))
-    .on('finish', () => console.log('Done writing.'));
+const csv = require('@fast-csv/format');
+// const {parse} = require('json2csv');
+// const fields = ["changed", "disease", "age", "visit", "cure", "lvisit", "nvisit"];
+// const eol = "\n";|| ["patientName", "disease", "age", "visit", "cure", "lvisit", "nvisit"],
+var opts = {
+    headers:true ,
+    includeEndRowDelimiter:true
 }
+var entry = (data) => {
+    csv.format();
+    csv.write(data, opts)
+    .pipe(fs.createWriteStream("records.csv",{flags:"a"}));
+    console.log("done")
+    opts.headers = false;
+}
+// var entry = (data) => {
+//     try {
+//         const flExist = fs.existsSync("records.csv")
+//         if (flExist) {
+//             const csv = parse(data);
+//             fs.appendFileSync('records.csv', csv)
+//         } else {
+//             const csv = parse(data, opts);
+//             fs.appendFileSync('records.csv', csv)
+//         }
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }
 
 module.exports.entry = entry;

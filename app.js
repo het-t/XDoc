@@ -1,15 +1,16 @@
 //routes modules from routes folder
-const userRoutes = require('./routes/users')
-const indexRoutes = require('./routes/index')
+const indexRoutes = require('./routes/index.js')
+const userRoutes = require('./routes/users.js').router
+const mainContRoutes = require('./routes/maincontent.js')
 
 //script for db handling 
-const db = require('./db.js')
+const db = require('./scripts/db.js')
 
 
-const express = require('express')
-const path = require('path')
+const express = require('express');
+const path = require('path');
 
-const app = express()
+const app = express();
 
 //setting view engine 
 app.set('views', path.join(__dirname, 'views'))
@@ -19,22 +20,16 @@ app.use(express.static(__dirname + '/public'))
 
 
 //mounting index and user routers
-app.use('/', indexRoutes)
 app.use('/user', userRoutes)
+app.use('/', indexRoutes)
+app.all('*', (req, res)=> {
+    res.redirect("/webpages/login.html")
+})
+// app.use('/user', mainContRoutes)
+
 
 
 //creating server 
 app.listen(3030, () => {
     console.log("server is running")
 })
-
-
-
-
-
-
-
-
-
-
-

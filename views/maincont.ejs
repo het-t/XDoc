@@ -17,8 +17,8 @@
     <div id="account">
         <div class="logo"><img src="" alt=""></div>
         <div class="account-info">
-            <p><%= email%></p>
             <p><%= username%></p>
+            <p><%= email%></p>
         </div>
         
         </div>
@@ -42,29 +42,29 @@
 
         <div id="record">
 
-            <form action="" method="GET">
+            <form action="/user/record" method="POST">
                 <label for="pname">Patient Name &nbsp;:&nbsp;</label>
-                <input type="text" id="pname">
+                <input type="text" name="pname">
                 
                 <label for="disease">Disease &nbsp;:&nbsp;</label>
-                <input type="text" id="disease">
+                <input type="text" name="disease">
                 
               
                 <label for="age">Patient Age &nbsp;:&nbsp;</label>
-                <input type="number" id="age">
+                <input type="number" name="age" id="age">
                 
                 <label for="visit">Visit Index &nbsp;:&nbsp;</label>
-                <input type="number" id="visit">
+                <input type="number" id="visit" name="visit">
 
                 
                 <label for="cure">Treatment &nbsp;:&nbsp;</label>
-                <textarea id="cure" cols="50" rows="10"></textarea>
+                <textarea id="cure" name="cure" cols="50" rows="10"></textarea>
 
                 <label for="last-visit">Last Visit &nbsp;:&nbsp;</label>
-                <input type="date" id="last-visit">
+                <input type="date" name="lvisit">
                 
                 <label for="next-visit">Next Visit &nbsp;:&nbsp;</label>
-                <input type="date" id="next-visit">
+                <input type="date" name="nvisit">
 
 
                 <div id="form-btn">

@@ -16,7 +16,6 @@ var user = {
 }
 
 const secret = "dr.server"
-var record;
 
 router.get('/register', function (req, res) {
   res.sendFile(path.join(__dirname ,'../public', '/webpages/register.html'))
@@ -29,7 +28,7 @@ router.get('/login', function (req, res) {
 router.post('/record', function(req, res, next) {
   const form = formidable();
   form.parse(req, function (err, fields, files) {
-    console.log(fields)
+    // console.log(fields)
     var recordArray = [{
       pname:fields.pname,
       disease:fields.disease, 
@@ -65,7 +64,7 @@ router.post('/login', (req, res, next) => {
     var userInfoArray = [fields.username, fields.password]
   db.userLogin(userInfoArray).then(
       () => {
-        console.log(userInfoArray)
+        // console.log(userInfoArray)
         user.username = fields.username;
         user.email = fields.password;
         var payload = {
@@ -84,7 +83,7 @@ router.post('/login', (req, res, next) => {
         res.redirect('/webpages/register.html')
       }
     ).catch (
-        function (err) {
+        (err) => {
           console.log('wrong in promise')
         }
     )

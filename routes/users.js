@@ -53,6 +53,7 @@ router.post('/register', (req, res, next) => {
   form.parse(req, function(err, fields, files) {
     var userInfoArray = [fields.username, fields.password]
     db.userRegistration(userInfoArray)
+    db.newTable(userInfoArray[0])
   })
   res.redirect('/webpages/login.html')
 });
@@ -64,7 +65,6 @@ router.post('/login', (req, res, next) => {
     var userInfoArray = [fields.username, fields.password]
   db.userLogin(userInfoArray).then(
       () => {
-        // console.log(userInfoArray)
         user.username = fields.username;
         user.email = fields.password;
         var payload = {

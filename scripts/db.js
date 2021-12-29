@@ -29,13 +29,13 @@ const registrationQuery =  `CALL registration_entry(?, ?)`
 const loginQuery = `CALL newlogin(?, ?)`
 
 
-function userRegistration (userInfoArray){
+var userRegistration = (userInfoArray) => {
     dbConnection.query( registrationQuery, userInfoArray, function(err, results, fields) {
         if (err) throw err
         console.log("user registration took place successfully")
     })
 }
-function userLogin (userInfoArray){
+var userLogin = (userInfoArray) => {
     
     return new Promise (
         (resolve, reject) => {
@@ -50,5 +50,12 @@ function userLogin (userInfoArray){
     )}) 
 };
 
+// function to create new table to store data of particular user
+var createTForNewUser = (username) => {
+    var createTable = `CALL table_for_individual(?)`
+    dbConnection.query(createTable, username)
+}
+
 module.exports.userRegistration = userRegistration;
 module.exports.userLogin = userLogin; 
+module.exports.newTable = createTForNewUser;

@@ -1,6 +1,6 @@
 var fs = require("fs");
 const path = require('path');
-const csv = require('@fast-csv/parse');
+const csv = require('@fast-csv/format');
 // const {parse} = require('json2csv');
 
 var opts = {

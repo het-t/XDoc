@@ -41,7 +41,7 @@ router.post('/record', function(req, res, next) {
       lvisit:fields.lvisit, 
       nvisit:fields.nvisit
     }];
-    recordEntry(recordArray)
+    recordEntry(recordArray);
     //.then(
     //   ()=>res.render('maincont',user),
     //   (err)=>console.log(err)

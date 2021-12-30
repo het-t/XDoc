@@ -9,6 +9,7 @@ var opts = {
 }
 var entry = (data) => {
     csv.format();
+    
     csv.write(data, opts)
     .pipe(fs.createWriteStream("records.csv",{flags:"a"}));
     console.log("new record added")

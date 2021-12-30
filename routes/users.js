@@ -1,9 +1,11 @@
 var express = require('express');
+var app = express();
 const jwt = require('jsonwebtoken')
 const formidable = require('formidable')
 const db = require('../scripts/db.js')
 const path = require('path');
 var recordEntry = require('../scripts/recordEntry').entry
+// var myaccount = require('./myaccount.js');
 
 var router = express.Router();
 
@@ -17,6 +19,7 @@ var user = {
 
 const secret = "dr.server"
 
+// app.use('/statastics', myaccount);
 router.get('/register', function (req, res) {
   res.sendFile(path.join(__dirname ,'../public', '/webpages/register.html'))
 })

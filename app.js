@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'))
 //mounting index and user routers
 app.use('/user', userRoutes)
 app.use('/', indexRoutes)
-app.use('/record', mainContRoutes)
+
 // app.all('*', (req, res)=> {
 //     res.redirect("/webpages/login.html")
 // })

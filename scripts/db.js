@@ -2,6 +2,7 @@ var db = require('mysql')
 var http = require('http')
 var express = require('express')
 const res = require('express/lib/response')
+const { resolve } = require('path')
 var app = express()
 
 const dbConnection = db.createConnection({
@@ -12,7 +13,7 @@ const dbConnection = db.createConnection({
 })
 
 
-dbConnection.connect(function(err) {
+dbConnection.connect((err)=> {
     if(err) {
         console.log("db connection error")
     }
@@ -30,7 +31,7 @@ const loginQuery = `CALL newlogin(?, ?)`
 
 
 var userRegistration = (userInfoArray) => {
-    dbConnection.query( registrationQuery, userInfoArray, function(err, results, fields) {
+    dbConnection.query( registrationQuery, userInfoArray, (err, results, fields) => {
         if (err) throw err
         console.log("user registration took place successfully")
     })
@@ -56,6 +57,29 @@ var createTForNewUser = (username) => {
     dbConnection.query(createTable, username)
 }
 
+// var linkUserToTable = (req, res, next)=> {
+//     dbConnection.query()
+// }
+
+var recordEntry = (record)=>{
+    return new Promise (
+        (resolve, reject) => {
+            var recordEntryQuery = `CALL entry(?,?,?,?,?,?,?,?)`;
+            dbConnection.query(recordEntryQuery, record ,(err, results, fields)=> {
+                if (err) {
+                    console.log(err)
+                    reject();
+                } else if (results) {
+                    resolve();
+                }
+            })
+        }
+       
+    )    
+}
+
+module.exports.recordEntry = recordEntry;
+// module.exports.linkUserToTable = linkUserToTable;
 module.exports.userRegistration = userRegistration;
 module.exports.userLogin = userLogin; 
 module.exports.newTable = createTForNewUser;

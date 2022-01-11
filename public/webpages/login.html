@@ -5,15 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <link rel="stylesheet" href="../stylesheets/stylesheet.css">
 </head>
 <body>
-    <h1>login</h1>
-    <form action="/user/login" method="POST" autocomplete="on">
-        <label for="uname">username</label><br>
-        <input type="text" name="username" id="uname"><br>
-        <label for="pwd">password</label><br>
-        <input type="text" name="password" id="pwd"><br><br>
-        <button type="submit">login</button><br>
-    </form>
+    <div class="wrapper">
+        <div class="partition1">
+            <div class="empty"></div>
+            <div class="register-box">
+                <div class="logo">
+                    <h1>Doc.</h1>
+                    <p>In Service Of Heroes</p>
+                </div>
+                <h1>Sign In</h1>
+                <p>Don't have an account ? <a href="./register.html">Sign Up</a></p>
+                <form action="/user/login" method="POST" autocomplete="off">
+                    <label for="uname">Email address *</label><br>
+                    <input type="text" name="username" id="uname"><br>
+                    <label for="pwd">Password *</label><br>
+                    <input type="text" name="password" id="pwd"><br><br>
+                    <button type="submit">Sign In</button><br>
+                </form>
+            </div>   
+        </div>
+        <div class="partition2">
+            <div class="polka1"></div>
+            <div class="polka2"></div>
+            <div class="writeup">
+                <h1>Welcome to<br>
+                    our community</h1><br>
+                    <p>Doc. (Doc dot) is project to help medical staff store and analyze data related to their patients.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

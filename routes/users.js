@@ -4,11 +4,7 @@ const jwt = require('jsonwebtoken')
 const formidable = require('formidable')
 const db = require('../scripts/db.js')
 const path = require('path');
-var recordEntry = require('../scripts/recordEntry').entry;
 var cookieParser = require('cookie-parser');
-
-var session = require('express-session');
-const { request } = require('http');
 
 app.use(cookieParser());
 // var stats = require('./stats.js').router;
@@ -35,36 +31,52 @@ router.get('/login', (req, res)=> {
 })
 
 
-var validateCookie= (req, res, next) => {
+var validateCookie = (req, res, next) => {
   cookieParser("dr.server");
   jwt.verify(req.signedCookies.access_token, secret, (err, authorizedData)=>{
     if(err) {
       console.log(err)
       return
     } else {
-      console.log(authorizedData)
-      res.render('maincont',  user)
+      next();
     }
-})
-}
-
-router.post('/record', cookieParser("dr.server"), validateCookie, (req, res, next)=>{
-  const form = formidable();
-  form.parse(req, (err, fields, files)=> {
-    var recordArray = [{
-      pname:fields.pname,
-      disease:fields.disease, 
-      age:fields.age, 
-      visit:fields.visit, 
-      cure:fields.cure, 
-      lvisit:fields.lvisit, 
-      nvisit:fields.nvisit
-    }];
-    recordEntry(recordArray);
   })
+};
+
+router.post('/record', cookieParser("dr.server"), validateCookie, (req, res, next) => {
+  const form = formidable();
+
+  form.parse(req, (err, fields, files)=> {
+    var decodedToken = jwt.verify(req.signedCookies.access_token, secret)
+    var tablename = decodedToken.username;
+    var lvisit = fields.lvisit.toString().replace("-","").replace("-",""); 
+    var nvisit = fields.nvisit.toString().replace("-","").replace("-","");
+
+    var recordArray = [
+      fields.pname,
+      fields.disease, 
+      fields.age, 
+      fields.visit, 
+      fields.cure, 
+      lvisit,
+      nvisit,
+      tablename
+    ];
+
+    db.recordEntry(recordArray).then(
+      ()=>{
+       next();
+      }, 
+      ()=> {
+        console.log("something wrong in recordEntry() promise")
+      }
+    )
+  })
+},validateCookie,(req, res)=>{
+  res.render('maincont', user)
 })
 
-router.get('/register', (req, res, next) => {
+router.post('/register', (req, res, next) => {
   const form = new formidable.IncomingForm();
   form.parse(req, (err, fields, files)=> {
     var userInfoArray = [fields.username, fields.password];
@@ -116,8 +128,4 @@ cookieParser("dr.server")
   }
 )
 
-// router.get('/data', (req, res, next)=>{
-  
-// })
-
-module.exports = router;
+module.exports = router

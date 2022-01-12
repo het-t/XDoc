@@ -56,9 +56,9 @@ router.post('/record', cookieParser("dr.server"), validateCookie, (req, res, nex
       fields.pname,
       fields.disease, 
       fields.age, 
-      fields.visit, 
+      // fields.visit, 
       fields.cure, 
-      lvisit,
+      // lvisit,
       nvisit,
       tablename
     ];

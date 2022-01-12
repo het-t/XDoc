@@ -1,0 +1,16 @@
+.data {
+    background-color: whitesmoke;
+    width:80%;
+    padding:40px ;
+    box-sizing:border-box;
+}
+#records {
+    padding:40px;
+    width:80%;
+    height:80%;
+    background-color: white;
+    overflow: scroll;
+}
+h2 {
+    margin:0;
+}

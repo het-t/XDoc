@@ -48,11 +48,8 @@ button:hover, button:focus {
     cursor: pointer;
     outline:none;
 }
-img {
-    margin-left: -2px;
-    margin-bottom: 24px;
-}
 input[type=text] {
+    font-family: 'Inter', sans-serif;
     margin:10px 0;
     padding:14px 16px;
     width :130%;

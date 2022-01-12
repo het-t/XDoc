@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stats.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.Dr.</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="account" id="bar2">
+        <div id="account">
+            <div class="logo">
+                <h1>Doc.</h1>
+                <p>In Service Of Heroes</p>
+            </div>
+            <div class="account-info">
+                <div class="dp">
+                    
+                </div><hr class="dotted" width="60%">
+                <div class="userinfo">
+                    <p><%= username%></p>
+                    <p><%= email%></p>
+                </div><hr class="dotted" width="60%">
+            </div>
+        </div>
+
+        <div id="menu">
+            <ul id="main-nav">
+                <li><a href="/Profile">Profile</a></li>
+                <li><a href="user/statastics">Stats</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+            <div id="border2"></div>
+        </div>
+    </div>
+ 
+
+    <div class="data">
+        <div id="records">
+            <h2>stats</h2>
+            <form method="GET">
+                <label for="pid">ID : </label>
+                <input type="text" name="pid">
+                <label for="lvisit">Last visit : </label>
+                <input type="date" name="lvisit">
+                <label for="nvisit">Next visit : </label>
+                <input type="date" name="nvisit">
+                <button id="submit" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+    <!-- <link rel="javascript/text" href="../scripts/filter.js"> -->
+</body>
+</html>

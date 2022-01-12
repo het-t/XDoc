@@ -57,14 +57,10 @@ var createTForNewUser = (username) => {
     dbConnection.query(createTable, username)
 }
 
-// var linkUserToTable = (req, res, next)=> {
-//     dbConnection.query()
-// }
-
 var recordEntry = (record)=>{
     return new Promise (
         (resolve, reject) => {
-            var recordEntryQuery = `CALL entry(?,?,?,?,?,?,?,?)`;
+            var recordEntryQuery = `CALL entry(?,?,?,?,?,?)`;
             dbConnection.query(recordEntryQuery, record ,(err, results, fields)=> {
                 if (err) {
                     console.log(err)
@@ -78,8 +74,24 @@ var recordEntry = (record)=>{
     )    
 }
 
+//fucntion to display records from database into html
+var showRecords = (records)=>{
+    
+}
+
+var filter = (Tablename , PID , Lvisit , Nvisit)=>{
+    var filterQuery = `CALL filter(?,?,?,?)`
+    dbConnection.query(filterQuery ,[Tablename , PID , Lvisit , Nvisit], (err, results, fields)=>{
+       if (err) console.log(err)
+       else {
+          showRecords();
+       };
+       console.log("reached")
+   })
+}
+
 module.exports.recordEntry = recordEntry;
-// module.exports.linkUserToTable = linkUserToTable;
+module.exports.filter = filter;
 module.exports.userRegistration = userRegistration;
 module.exports.userLogin = userLogin; 
 module.exports.newTable = createTForNewUser;

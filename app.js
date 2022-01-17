@@ -1,7 +1,6 @@
 //routes modules from routes folder
 const indexRoutes = require('./routes/index.js')
 const userRoutes = require('./routes/users.js')
-const statsRoutes = require('./routes/stats.js')
 
 
 //script for db handling 
@@ -23,7 +22,7 @@ app.use(express.static(__dirname + '/public'))
 //mounting index and user routers
 app.use('/user', userRoutes)
 app.use('/', indexRoutes)
-app.use('/user/statastics', statsRoutes)
+
 
 // app.all('*', (req, res)=> {
 //     res.redirect("/webpages/login.html")

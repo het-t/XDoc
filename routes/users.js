@@ -5,6 +5,7 @@ const formidable = require('formidable')
 const db = require('../scripts/db.js')
 const path = require('path');
 var cookieParser = require('cookie-parser');
+var statsRoutes = require('./stats.js')
 
 app.use(cookieParser());
 // var stats = require('./stats.js').router;
@@ -127,5 +128,7 @@ cookieParser("dr.server")
     res.render('maincont', user)
   }
 )
+
+router.use("/statastics",statsRoutes)
 
 module.exports = router

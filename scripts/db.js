@@ -74,21 +74,20 @@ var recordEntry = (record)=>{
     )    
 }
 
-//fucntion to display records from database into html
-var showRecords = (records)=>{
-    
-}
-
 var filter = (Tablename , PID , Lvisit , Nvisit)=>{
     var filterQuery = `CALL filter(?,?,?,?)`
-    dbConnection.query(filterQuery ,[Tablename , PID , Lvisit , Nvisit], (err, results, fields)=>{
-       if (err) console.log(err)
-       else {
-          showRecords();
-       };
-       console.log("reached")
-   })
+    return new Promise((resolve, reject)=>{
+        dbConnection.query(filterQuery ,[Tablename , PID , Lvisit , Nvisit], (err, results, fields)=>{
+            if (err) {
+                reject(err)
+            } else {
+                resolve(results)
+            }
+        });
+    })
 }
+
+
 
 module.exports.recordEntry = recordEntry;
 module.exports.filter = filter;

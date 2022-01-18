@@ -35,7 +35,7 @@
         <div id="menu">
             <ul id="main-nav">
                 <li><a href="/Profile">Profile</a></li>
-                <li><a href="user/statastics">Stats</a></li>
+                <li><a href="./">Stats</a></li>
                 <li><a href="/contact">Contact Us</a></li>
                 <li><a href="/help">Help</a></li>
             </ul>
@@ -58,10 +58,35 @@
             </form>
         </div>
         <div id="db-records">
+            <table>
+                <tr>
+                  
+                    <th>PID</th>
+                    <th>Disease</th>
+                    <th>Age</th>
+                    <th>Visit</th>
+                    <th>Cure</th>
+                    <th>Last visit</th>
+                    <th>Next visit</th>
 
+                </tr>
+                
+                <% if (records != '') {
+                    
+                    for (var recordObj of records) { %>
+                        <tr>
+                            <% for (var key in recordObj ) { %>
+                                <td> <%= recordObj[key] %> </td>
+                            <% } %>
+                        </tr>
+                    <% }
+                } %>
+
+            </table>
+         
         </div>
     </div>
 </div>
-    <!-- <link rel="javascript/text" href="../scripts/filter.js"> -->
+    <!-- <link rel="javascript/text" href="../scripts/showRecords.js"> -->
 </body>
 </html>

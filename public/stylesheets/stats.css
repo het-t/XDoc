@@ -9,12 +9,13 @@
 #records {
     padding:40px;
     background-color: white;
-    height:90%;
-    overflow: scroll;
+    height:5%;
 }
 #db-records {
-    width:100%;
-
+    padding:40px;
+    height:95%;
+    padding:40px;
+    background-color: white;
 }
 h2 {
     margin:0;

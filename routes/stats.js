@@ -9,7 +9,8 @@ var db = require('../scripts/db')
 const formidable = require('formidable')
 var user = {
     username:'',
-    email:''
+    email:'',
+    records:''
 }
 
 router.get('/', cookieParser("dr.server"), (req, res, next)=>{
@@ -29,7 +30,6 @@ searchRouter.get("/", (req, res, next)=>{
 })
 searchRouter.get('/search',(req, res, next)=>{
     console.log(req.query)
-    // condition ? exprIfTrue : exprIfFalse
     
     var pid = req.query.pid
     var lvisit = req.query.lvisit
@@ -38,14 +38,20 @@ searchRouter.get('/search',(req, res, next)=>{
     lvisit = lvisit.toString().replace('-','').replace('-','');
     nvisit = nvisit.toString().replace('-','').replace('-','');
 
+    // condition ? exprIfTrue : exprIfFalse
+
     pid = '' ? pid = "0" : pid;
     lvisit = '' ? lvisit = "0" : lvisit;
     nvisit = '' ? nvisit = "0" : nvisit;
     console.log(pid , lvisit , nvisit)
     db.filter(user.username, pid, lvisit, nvisit)
     .then((results)=>{
+        // console.log(results)
+        // console.log(results[0])
         console.log(results)
-        res.json(results)
+
+        user.records = results[0];
+        res.render("stats" , user)
     }, (err)=>{
         console.log(err)
         console.log("promise rejected in filter function of db.js")

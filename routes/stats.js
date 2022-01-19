@@ -29,7 +29,6 @@ searchRouter.get("/", (req, res, next)=>{
     res.render('stats', user)
 })
 searchRouter.get('/search',(req, res, next)=>{
-    console.log(req.query)
     
     var pid = req.query.pid
     var lvisit = req.query.lvisit
@@ -43,18 +42,19 @@ searchRouter.get('/search',(req, res, next)=>{
     pid = '' ? pid = "0" : pid;
     lvisit = '' ? lvisit = "0" : lvisit;
     nvisit = '' ? nvisit = "0" : nvisit;
-    console.log(pid , lvisit , nvisit)
+
     db.filter(user.username, pid, lvisit, nvisit)
     .then((results)=>{
-        // console.log(results)
-        // console.log(results[0])
-        console.log(results)
-
-        user.records = results[0];
+        user.records =  results[0];
         res.render("stats" , user)
     }, (err)=>{
         console.log(err)
         console.log("promise rejected in filter function of db.js")
+    }).finally(()=>{
+        user.records = '';
+        pid = '';
+        lvisit = '';
+        nvisit = '';
     })
 })
 

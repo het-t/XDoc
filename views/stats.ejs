@@ -46,10 +46,10 @@
 
     <div class="data">
         <div id="records">
-            <h2>stats</h2>
+            <h2>Stats </h2>
             <form action="search" method="GET">
                 <label for="pid">ID : </label>
-                <input type="text" name="pid">
+                <input size="12" type="text" name="pid">
                 <label for="lvisit">Last visit : </label>
                 <input type="date" name="lvisit">
                 <label for="nvisit">Next visit : </label>
@@ -59,8 +59,8 @@
         </div>
         <div id="db-records">
             <table>
-                <tr>
-                  
+                <tr id="header-row">
+                    <th>Patient Name</th>
                     <th>PID</th>
                     <th>Disease</th>
                     <th>Age</th>
@@ -72,12 +72,32 @@
                 </tr>
                 
                 <% if (records != '') {
-                    
+                    var format = function (key) {
+                        if (key) {
+                            var formatedKey = key
+                            formatedKey = formatedKey.toString();
+                            formatedKey = formatedKey.split(" ")
+                            formatedKey.pop();
+                            formatedKey.pop();
+                            formatedKey.pop();
+                            formatedKey.pop();
+                            formatedKey.pop();   
+                            return formatedKey.join(" ");    
+                        } else  {
+                            return key;
+                        }       
+                    };
                     for (var recordObj of records) { %>
                         <tr>
-                            <% for (var key in recordObj ) { %>
-                                <td> <%= recordObj[key] %> </td>
-                            <% } %>
+                            <%  
+                                var Lvisit = recordObj.Lvisit;
+                                var Nvisit = recordObj.Nvisit;
+                                recordObj.Lvisit = format(Lvisit);
+                                recordObj.Nvisit = format(Nvisit);
+                                
+                                for (var key in recordObj ) { %>
+                                    <td> <%= recordObj[key] %> </td>
+                            <%  } %>
                         </tr>
                     <% }
                 } %>

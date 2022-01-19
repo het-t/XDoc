@@ -26,7 +26,7 @@ input[type=text], input[type=date], input[type=number], textarea  {
 input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, textarea:focus {
     outline: none;
     transition: 300ms;
-    border: 1px solid #1e293b93;
+    border: 1px solid #1d283a93;
 }
 .date {
     display:flex;

@@ -61,11 +61,11 @@ label {
 #nvisit {
     margin-left:54px;
 }
-
-#form-btn {
+*/
+form-btn {
     display: flex;
-    margin:30px auto; */
-/* }
+    margin:30px auto; 
+}
 #erase , #submit {
     margin:20px;
     width:100px;
@@ -97,7 +97,7 @@ label {
     color:green;
     border: 1px solid green;
     cursor:pointer;
-} */
+}
 /* #disease-label {
     text-align: right;
 }

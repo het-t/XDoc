@@ -49,48 +49,54 @@
         <div class="data">
             <div class="help">
                 <h2>Setting </h2><br>
-                <h4>Add new field :</h4>
-                    <form class="formCnf" action="./setting/add" method="GET">
-                        <label for="fieldName">Label :</label>
-                        <input type="text" name="fieldName"><br>
-                        <label for="fieldType">Type &nbsp;:</label>
-                        <select name="fieldType" id="fieldType">
-                            <option value="int">number</option>
-                            <option value="varchar(15)">15 characters</option>
-                            <option value="varchar(30)">30 characters</option>
-                            <option value="varchar(90)">90 characters</option>
-                            <option value="varchar(250)">255 characters</option>
-                            <option value="date">Date</option>
-                            
-                        </select><br>
-                        <button type="submit">Add</button>
-                    </form>
-                        
-                <br>
-                <h4>Remove field :</h4>
-                    <form class="formCnf" action="./setting/remove" method="GET">
-                        <label for="fieldToRm">Field : </label>
-                        <select name="fieldToRm" id="fieldToRm">
-
-                            <%  
-                                for (var obj of opts) {
-                                    var value = obj.COLUMN_NAME + ' (' + obj.COLUMN_TYPE + ')'
-                            %>  
+                <div>
+                    <h4>Add new field :</h4>
+                        <form class="formCnf" action="./setting/add" method="GET">
+                            <label for="fieldName">Label :</label>
+                            <input type="text" name="fieldName"><br>
+                            <label for="fieldType">Type &nbsp;:</label>
+                            <select name="fieldType" id="fieldType">
+                                <option value="" selected></option>
+                                <option value="int">number</option>
+                                <option value="varchar(15)">15 characters</option>
+                                <option value="varchar(30)">30 characters</option>
+                                <option value="varchar(90)">90 characters</option>
+                                <option value="varchar(255)">255 characters</option>
+                                <option value="date">Date</option>
                                 
-                                    <option value=
-                                        <%=  [ obj.COLUMN_NAME, obj.COLUMN_TYPE] %>
-                                    >
-                                        <%= value %>
-                                    </option>
-                            <%
-                                }
-                            %>
-                        
-                        </select><br>
-                        <button type="submit">Remove</button>
-
-                    </form>
+                            </select><br>
+                            <button type="submit" id="add">Add</button>
+                        </form>
+                            
+                    <br>
                 </div>
+                <div>
+                    <h4>Remove field :</h4>
+                        <form class="formCnf" action="./setting/remove" method="GET">
+                            <label for="fieldToRm">Field : </label>
+                            <select name="fieldToRm" id="fieldToRm">
+                                <option value="" selected></option>
+
+                                <%  
+                                    for (var obj of opts) {
+                                        var value = obj.COLUMN_NAME + ' (' + obj.COLUMN_TYPE + ')'
+                                %>  
+                                    
+                                        <option default="--select--" value=
+                                            <%=  [ obj.COLUMN_NAME, obj.COLUMN_TYPE] %>
+                                        >
+                                            <%= value %>
+                                        </option>
+                                <%
+                                    }
+                                %>
+                            
+                            </select><br>
+                            <button type="submit" id="remove">Remove</button>
+
+                        </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

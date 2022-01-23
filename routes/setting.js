@@ -39,7 +39,7 @@ router.get('/add',(req,res,next)=>{
         }
     })
 },(req,res,next)=>{
-    res.redirect('./');
+    res.redirect('/user/setting');
 })
 router.get('/remove',(req,res,next)=>{
     // first element is fieldName and second element is fieldType
@@ -51,7 +51,7 @@ router.get('/remove',(req,res,next)=>{
         else next();
     })
 },(req,res,next)=>{
-    res.redirect('./');
+    res.redirect('/user/setting');
 })
 
 module.exports = router;

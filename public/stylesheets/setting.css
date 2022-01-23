@@ -1,0 +1,14 @@
+input[type=text]{
+    font-family: 'Inter', sans-serif;
+    padding:7px 8px;
+    border-radius: 6px 6px;
+}
+label , select ,input[type=text] , button {
+    margin:12px;
+}
+button , select {
+    width:100px;
+    padding:7px 8px;
+    border-radius: 6px 6px;
+    font-family: 'Inter', sans-serif;
+}

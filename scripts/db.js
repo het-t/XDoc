@@ -5,7 +5,7 @@ const res = require('express/lib/response')
 const { resolve } = require('path')
 var app = express()
 
-const dbConnection = db.createConnection({
+var dbConnection = db.createConnection({
     host     : 'localhost',
     user     : 'ht',
     password : 'het161967',
@@ -28,7 +28,7 @@ var username, password;
 var userInfoArray = [username, password]
 const registrationQuery =  `CALL registration_entry(?, ?)`
 const loginQuery = `CALL newlogin(?, ?)`
-
+var user = require('../scripts/userInfo')
 
 var userRegistration = (userInfoArray) => {
     dbConnection.query( registrationQuery, userInfoArray, (err, results, fields) => {
@@ -43,6 +43,7 @@ var userLogin = (userInfoArray) => {
             dbConnection.query( loginQuery, userInfoArray, (err, results, fields)=> {
             if (err) console.log(err)
             if (results?.[0]?.[0]?.username && results?.[0]?.[0]?.password) {
+                user.fieldList = results?.[0]?.[0]?.fieldList;
                 resolve()
             } else {
                 reject()
@@ -88,7 +89,7 @@ var filter = (Tablename , PID , Lvisit , Nvisit)=>{
 }
 
 
-
+module.exports.dbConnection = dbConnection;
 module.exports.recordEntry = recordEntry;
 module.exports.filter = filter;
 module.exports.userRegistration = userRegistration;

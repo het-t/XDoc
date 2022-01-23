@@ -6,19 +6,23 @@ const db = require('../scripts/db.js')
 const path = require('path');
 var cookieParser = require('cookie-parser');
 var statsRoutes = require('./stats.js')
+var profileRoutes = require('./profile.js')
+var settingRoutes = require('./setting')
+var user = require('../scripts/userInfo');
 
 app.use(cookieParser());
+
 // var stats = require('./stats.js').router;
 
 var router = express.Router();
 
 // populating user object with data provided in login 
 // also used as provide in jwt
-var user = {
-  username:'',
-  email:'',
-  token:''
-}
+// var user = {
+//   username:'',
+//   email:'',
+//   token:''
+// }
 
 
 const secret = "dr.server"
@@ -28,7 +32,7 @@ router.get('/register', (req, res)=> {
 })
 
 router.get('/login', (req, res)=> {
-  res.sendFile(path.join(__dirname ,'../public', '/webpages/login.html'))
+  res.sendFile(path.join(__dirname ,'../public', '/webpages/index.html'))
 })
 
 
@@ -50,7 +54,8 @@ router.post('/record', cookieParser("dr.server"), validateCookie, (req, res, nex
   form.parse(req, (err, fields, files)=> {
     var decodedToken = jwt.verify(req.signedCookies.access_token, secret)
     var tablename = decodedToken.username;
-    var lvisit = fields.lvisit.toString().replace("-","").replace("-",""); 
+    // console.log(fields)
+    var lvisit = fields?.lvisit?.toString().replace("-","").replace("-",""); 
     var nvisit = fields.nvisit.toString().replace("-","").replace("-","");
 
     var recordArray = [
@@ -84,11 +89,24 @@ router.post('/register', (req, res, next) => {
     db.userRegistration(userInfoArray);
     db.newTable(userInfoArray[0]);
   })
-  res.redirect('/webpages/login.html')
+  res.redirect('/user/login')
 });
 
+router.get('/record',(req, res, next)=>{
+  
+  var fetchLabels = `CALL fetchLabels(?)`
+  
+  db.dbConnection.query(fetchLabels , [user.username] , (err, results, fields)=>{
+    if (err) console.log(err);
+    else {
+        user.fieldList = results[0];
+        next();
+    }
+  })
+},(req,res,next)=>{
+  res.render('maincont', user)
+})
 router.post('/login', (req, res, next) => {
-
   const form = new formidable.IncomingForm();
   form.parse(req, (err, fields, files)=> {
     var userInfoArray = [fields.username, fields.password]
@@ -96,6 +114,7 @@ router.post('/login', (req, res, next) => {
       () => {
         user.username = fields.username;
         user.email = fields.password;
+
         var payload = {
           username:user.username,
           email:user.email
@@ -125,10 +144,16 @@ cookieParser("dr.server")
       httpOnly: true,
       signed:true,
     }).status(200)
-    res.render('maincont', user)
+    res.redirect('/user/record')
+    // res.render('maincont', user)
   }
 )
+router.get("/help",(req,res,next)=>{
+  res.render("help", user);
+})
 
 router.use("/statastics",statsRoutes)
+router.use("/profile", profileRoutes)
+router.use("/setting", settingRoutes)
 
 module.exports = router

@@ -7,11 +7,12 @@ app.use(cookieParser())
 var jwt = require('jsonwebtoken')
 var db = require('../scripts/db')
 const formidable = require('formidable')
-var user = {
-    username:'',
-    email:'',
-    records:''
-}
+var user = require('../scripts/userInfo')
+// var user = {
+//     username:'',
+//     email:'',
+//     records:''
+// }
 
 router.get('/', cookieParser("dr.server"), (req, res, next)=>{
     var access_token = req.signedCookies.access_token
@@ -24,8 +25,6 @@ router.get('/', cookieParser("dr.server"), (req, res, next)=>{
 router.use("/:username",searchRouter)
 
 searchRouter.get("/", (req, res, next)=>{
-    // // console.log("request params", req.params)
-    // // console.log("more", req.query)
     res.render('stats', user)
 })
 searchRouter.get('/search',(req, res, next)=>{

@@ -1,4 +1,6 @@
 .data {
+    height:auto;
+    margin-left:20%;
     background-color: whitesmoke;
     width:80%;
     padding:40px ;
@@ -82,4 +84,7 @@ td {
     color: #1E293B;
     padding-top:8px;
     padding-bottom:8px;
+}
+.wrapper {
+    height: 100vh !important;
 }

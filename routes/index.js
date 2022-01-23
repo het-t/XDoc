@@ -7,7 +7,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../public', '/webpages/login.html'))
+  res.sendFile(path.join(__dirname, '../public', '/webpages/index.html'))
 })
 
 

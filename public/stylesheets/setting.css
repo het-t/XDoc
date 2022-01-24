@@ -1,0 +1,67 @@
+input[type=text] , select{
+    font-family: 'Inter', sans-serif;
+    padding:7px 8px;
+    border: 1px solid rgb(203, 213, 225);
+    margin:12px 0;
+    border-radius: 6px;
+}
+input[type=text]:focus ,select:focus {
+    outline: none;
+    border: 1px solid #1d283a93;
+    transition: 300ms;
+}
+label , select ,input[type=text] , button {
+    margin:12px;
+}
+button , select {
+    width:100px;
+    padding:7px 8px;
+    border-radius: 6px 6px;
+    font-family: 'Inter', sans-serif;
+}
+select {
+    width:200px !important;
+}
+#add {
+    color:white;
+    padding:8px 24px;
+    background-color: green;
+    border-top-left-radius: 90000px;
+    border-top-right-radius: 90000px;
+    border-bottom-left-radius: 90000px;
+    border-bottom-right-radius: 90000px;
+    border:1px solid white ;
+    cursor:pointer;
+    transition: 300ms;
+}
+#add:hover , #add:focus {
+    color:green;
+    border-color: green;
+    background-color: white;
+}
+#add:focus , #remove:focus {
+    outline:none;
+}
+#remove {
+    color:white;
+    padding:8px 24px;
+    background-color: red;
+    border-top-left-radius: 90000px;
+    border-top-right-radius: 90000px;
+    border-bottom-left-radius: 90000px;
+    border-bottom-right-radius: 90000px;
+    border:1px solid white ;
+    cursor:pointer;
+    transition: 300ms;
+    margin-top:66px;
+}
+#remove:hover , #remove:focus {
+    color:red;
+    border-color: red;
+    background-color: white;
+}
+.help {
+    display: grid !important;
+    grid-template-columns: auto auto;
+    grid-template-rows: 80px auto;
+}

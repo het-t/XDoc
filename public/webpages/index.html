@@ -6,13 +6,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Doc.</title>
+    <title>Login | Doc.</title>
     <link rel="stylesheet" href="../stylesheets/stylesheet.css">
 </head>
 <body>
-
     <div class="wrapper">
         <div class="partition1">
             <div class="empty"></div>
@@ -21,14 +21,14 @@
                     <h1>Doc.</h1>
                     <p>In Service Of Heroes</p>
                 </div>
-                <h1>Sign Up</h1>
-                <p>Already have an account ? <a href="/webpages/index.html">Sign In</a></p>
-                <form action="/user/register" method="POST" autocomplete="off">
+                <h1>Sign In</h1>
+                <p>Don't have an account ? <a href="/webpages/register.html">Sign Up</a></p>
+                <form action="/user/login" method="POST" autocomplete="off">
                     <label for="uname">Email address *</label><br>
                     <input type="text" name="username" id="uname"><br>
                     <label for="pwd">Password *</label><br>
                     <input type="text" name="password" id="pwd"><br><br>
-                    <button type="submit">Sign Up</button><br>
+                    <button type="submit">Sign In</button><br>
                 </form>
             </div>   
         </div>
@@ -38,11 +38,9 @@
             <div class="writeup">
                 <h1>Welcome to<br>
                     our community</h1><br>
-                    <p>doc. (doc-dot) is opensource project to help medical staff store and analyze data related to their patients.</p>
+                    <p>Doc. (Doc dot) is project to help medical staff store and analyze data related to their patients.</p>
             </div>
         </div>
     </div>
-    
-    
 </body>
 </html>

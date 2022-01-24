@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stats.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statastics | Doc.</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="account" id="bar2">
+        <div id="account">
+            <div class="logo">
+                <a href="/user/record"><h1>Doc.</h1></a>
+                <p>In Service Of Heroes</p>
+            </div>
+            <div class="account-info">
+                <div class="dp">
+                    
+                </div><hr class="dotted" width="60%">
+                <div class="userinfo">
+                    <p><%= username%></p>
+                    <p><%= email%></p>
+                </div><hr class="dotted" width="60%">
+            </div>
+        </div>
+
+        <div id="menu">
+            <ul id="main-nav">
+                <li><a href="/user/profile">Profile</a></li>
+                <li><a class="active-link" href="./">Stats</a></li>
+                <li><a href="/user/setting">Setting</a></li>
+                <li><a href="/user/help">Help</a></li>
+            </ul>
+            <div id="border2"></div>
+        </div>
+    </div>
+ 
+
+    <div class="data">
+        <div id="records">
+            <h2>Stats </h2>
+            <form action="search" method="GET">
+                <label for="pid">ID : </label>
+                <input size="12" type="text" name="pid">
+                <label for="lvisit">Last visit : </label>
+                <input type="date" name="lvisit">
+                <label for="nvisit">Next visit : </label>
+                <input type="date" name="nvisit">
+                <button id="submit" type="submit">Search</button>
+            </form>
+        </div>
+        <div id="db-records">
+            <table>
+                <tr id="header-row">
+                    <th>Patient Name</th>
+                    <th>PID</th>
+                    <th>Disease</th>
+                    <th>Age</th>
+                    <th>Visit</th>
+                    <th>Cure</th>
+                    <th>Last visit</th>
+                    <th>Next visit</th>
+
+                </tr>
+                
+                <% if (records != '') {
+                    var format = function (key) {
+                        if (key) {
+                            var formatedKey = key
+                            formatedKey = formatedKey.toString();
+                            formatedKey = formatedKey.split(" ")
+                            formatedKey.pop();
+                            formatedKey.pop();
+                            formatedKey.pop();
+                            formatedKey.pop();
+                            formatedKey.pop();   
+                            return formatedKey.join(" ");    
+                        } else  {
+                            return key;
+                        }       
+                    };
+                    for (var recordObj of records) { %>
+                        <tr>
+                            <%  
+                                var Lvisit = recordObj.Lvisit;
+                                var Nvisit = recordObj.Nvisit;
+                                recordObj.Lvisit = format(Lvisit);
+                                recordObj.Nvisit = format(Nvisit);
+                                
+                                for (var key in recordObj ) { %>
+                                    <td> <%= recordObj[key] %> </td>
+                            <%  } %>
+                        </tr>
+                    <% }
+                } %>
+
+            </table>
+         
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

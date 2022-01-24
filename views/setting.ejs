@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/setting.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/help.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting | Doc.</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="account" id="bar2">
+        <div id="account">
+            <div class="logo">
+                <a href="/user/record"><h1>Doc.</h1></a>
+                <p>In Service Of Heroes</p>
+            </div>
+            <div class="account-info">
+                <div class="dp">
+                    
+                </div><hr class="dotted" width="60%">
+                <div class="userinfo">
+                    <p><%= username%></p>
+                    <p><%= email%></p>
+                </div><hr class="dotted" width="60%">
+            </div>
+        </div>
+
+        <div id="menu">
+            <ul id="main-nav">
+                <li><a href="./profile">Profile</a></li>
+                <li><a href="/user/statastics/">Stats</a></li>
+                <li><a class="active-link" href="/user/setting">Settings</a></li>
+                <li><a href="/user/help">Help</a></li>
+            </ul>
+            <div id="border2"></div>
+        </div>
+    </div>
+ 
+
+    <div class="menu-record">
+        <div class="data">
+            <div class="help">
+                <h2>Setting </h2><br>
+                <div>
+                    <h4>Add new field :</h4>
+                        <form class="formCnf" action="./setting/add" method="GET">
+                            <label for="fieldName">Label :</label>
+                            <input type="text" name="fieldName"><br>
+                            <label for="fieldType">Type &nbsp;:</label>
+                            <select name="fieldType" id="fieldType">
+                                <option value="" selected></option>
+                                <option value="int">number</option>
+                                <option value="varchar(15)">15 characters</option>
+                                <option value="varchar(30)">30 characters</option>
+                                <option value="varchar(90)">90 characters</option>
+                                <option value="varchar(255)">255 characters</option>
+                                <option value="date">Date</option>
+                                
+                            </select><br>
+                            <button type="submit" id="add">Add</button>
+                        </form>
+                            
+                    <br>
+                </div>
+                <div>
+                    <h4>Remove field :</h4>
+                        <form class="formCnf" action="./setting/remove" method="GET">
+                            <label for="fieldToRm">Field : </label>
+                            <select name="fieldToRm" id="fieldToRm">
+                                <option value="" selected></option>
+
+                                <%  
+                                    for (var obj of opts) {
+                                        var value = obj.COLUMN_NAME + ' (' + obj.COLUMN_TYPE + ')'
+                                %>  
+                                    
+                                        <option value=
+                                            <%=  [ obj.COLUMN_NAME, obj.COLUMN_TYPE] %>
+                                        >
+                                            <%= value %>
+                                        </option>
+                                <%
+                                    }
+                                %>
+                            
+                            </select><br>
+                            <button type="submit" id="remove">Remove</button>
+
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

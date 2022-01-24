@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;900&display=swap');
+ 
+.wrapper {
+    height: 100vh !important;
+}
+form {
+    /* width:100%; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    color:rgb(30,41,59);
+    background-color: white;
+    padding:20px 20px 0 20px;
+    box-sizing: content-box;
+}
+#record {
+    padding: 40px;
+    height:calc(100% - 100px);
+    overflow-y: scroll;
+}
+input {
+    width:50%;
+}
+textarea {
+    width:50%;
+}
+input[type=text], input[type=date], input[type=number], textarea  {
+    margin:12px 0;
+    padding: 7px 8px;
+    border: 1px solid rgb(203, 213, 225);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    margin-left:12px;
+}
+input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, textarea:focus {
+    outline: none;
+    transition: 300ms;
+    border: 1px solid #1d283a93;
+}
+/* input[type=date] {
+    height:50px;
+}
+.date {
+    display:flex;
+} */
+label {
+    padding-top :18px;
+    padding-left:12px;
+}
+/* .pdetail {
+    display:grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-gap:10px 10px;
+}
+.cure {
+    margin-top:10px;
+}
+#nvisit {
+    margin-left:54px;
+}
+*/
+form-btn {
+    display: flex;
+    margin:30px auto; 
+}
+#erase , #submit {
+    margin:20px;
+    width:100px;
+    padding:8px;
+    border-top-left-radius: 90000px;
+    border-top-right-radius: 90000px;
+    border-bottom-left-radius: 90000px;
+    border-bottom-right-radius: 90000px;
+    border:1px solid white;
+}
+#erase {
+    color:white;
+    background-color: red;
+}
+#erase:hover {
+    transition: 300ms;
+    background-color: white;
+    color:red;
+    border: 1px solid red;
+    cursor:pointer;
+}
+#submit {
+    color:white;
+    background-color: green;
+}
+#submit:hover {
+    transition: 300ms;
+    background-color: white;
+    color:green;
+    border: 1px solid green;
+    cursor:pointer;
+}
+/* #disease-label {
+    text-align: right;
+}
+.pdetail-label {
+    margin-left:15px;
+} */

@@ -1,167 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;900&display=swap');
 body {
-    margin:80px auto;
-    padding:0px;
-    width:70%;
-    height: 490px;
-    font-family: 'Lato', sans-serif;
-    background-color:rgb(218, 218, 218);
-    color:rgb(53, 53, 53);
-}
-.wrapper {
-    background-color:white;
-    border:1px solid white ;
-    border-radius:6px;
-    box-shadow:5px 5px 10px 1px rgb(119, 119, 119);
-}
-* {
-    scrollbar-width: thin;
-}
-
-/* account section */
-#account {
-    box-sizing:border-box;
-    height:50px;
-    width:100%;
-    background-color:white;
-    display:grid;
-    grid-template-columns: 35% 65%;
-    padding:18px 16px 4px 16px;
-}
-.account-info>p {
-    font-size:10px;
-    margin:0 55px;
-    padding:0;
-    font-weight:700;
-}
-#border1 {
-    margin-top:5px;
-    border-top: solid rgb(226, 226, 226) 2px;
-    position:absolute;
-    right:20%;
-    left:16%;
-}
-.account-info {
-    text-align:right;
-}
-/* menu-record class helps to keep menu and record as intented */
-.menu-record {
-    display:flex;
-    width:100%;
-    height:450px;
-}
-#border2 {
-    border-right:solid rgb(226, 226, 226) 2px;
-    padding-right:30px;
-}
-
-/* main nav start here */
-#menu {
-    width:30%;
-    box-sizing: border-box;
-    padding-top:30px;
-    background-color:white;
-    padding-bottom:30px;
-    display: flex;;
-}
-#main-nav {
-    background-color:white;
-    list-style-type: none;
+    background-color:rgb(45,50,62);
     margin:0;
+    padding:0;
+    font-family: 'Inter', sans-serif;
+    color:blue;
+    height: 100vh;
 }
-#main-nav li{
-    margin:40px 0px;
-    padding:2px 0px;
-    margin-right:11px;
-    font-size:16px;
-    width:fit-content;
-}
-#main-nav>li:hover{  
-    font-size:18px;
-    padding:0.5px 0px;
-    margin-right:0px;
-}
-a:hover{
-    color:black;
+p {
+    color:#1E293B;
+    margin-top: 6px;
+    margin-bottom:32px;
+    font-weight:500;
 }
 a {
-    text-decoration:none;
-    color:rgb(53, 53, 53);
-    font-weight:400;
-    width: 100%;
+    text-decoration: none;
 }
-
-/* records start from here */
-#record {
-    background-color:white;
-    width:70%;
-    height:72%;
-    padding:0 60px;
-    margin-top:40px;
-    overflow:scroll;
-    overflow-x:hidden;
-    scrollbar-width: thin;
+h1 {
+    margin:0;
+    font-size: 32px;
+    color:#1E293B;
+    text-align: left;
+    font-weight: 800;
 }
-form {
-    display:grid;
-    grid-template-columns: max-content max-content;
-    font-size:16px;
+button {
+    margin: 15px 0;
+    padding: 15px 16px;
+    font-size: 12px;
+    width:145%;
+    border-top-left-radius:9999px;
+    border-top-right-radius:9999px;
+    border-bottom-left-radius:9999px;
+    border-bottom-right-radius:9999px;
+    border:0;
+    font-size:14px;
+    font-weight:bold;
+    background-color:#4F46E5;
+    color:#FFFFFF;
+}
+button:hover, button:focus {
+    transition: 300ms;
+    background-color:#FFFFFF;
+    color:#4F46E5;
+    border:1px solid #4F46E5;
+    cursor: pointer;
+    outline:none;
+}
+input[type=text] {
+    font-family: 'Inter', sans-serif;
+    margin:10px 0;
+    padding:14px 16px;
+    width :130%;
+    border: 1px solid rgb(203, 213, 225);
+    border-radius:6px;
+}
+input[type=text]:focus {
+    border:1px solid rgb(79, 70, 229);
+    outline: none;
+    transition: 300ms;
+}
+.wrapper, .partition2 , .partition1 {
+    display: flex;
+}
+.partition2 , .partition1 {
+    height:100vh;
+    margin:3px;
+    width:50%;
+}
+.partition1 {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: white;
+    text-align: left;
+    justify-items: center;
+    align-items: center;
+    padding:0 auto;
 }
 label {
-    text-align:right;
-    margin:20px 0;
+    padding-right: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color:rgba(30,41,59,0.8);
 }
-input {
-    box-sizing:border-box;
-    margin:15px 0;
-    font-family: 'Lato', sans-serif;
-    padding:5px 10px;
-    font-size:16px;
+#uname {
+    margin-bottom: 18px;
 }
-textarea {
-    font-family: 'Lato', sans-serif;
-    padding:15px 20px;
-    font-size:16px;
+.empty , .register-box{
+    height:80%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: right;
+    text-align: left;
 }
-#cure {
-    overflow:scroll;
-    scrollbar-width: thin;
-    scrollbar-color: black;
+.empty {
+    width:35%
+}
+.register-box {
+    width:65%;
 }
 
-#age , #visit {
-    width:30%;
+
+
+.partition2 {
+    background-color: rgb(30,41,59);
+    align-items: center;
 }
-#form-btn {
-    display:flex;
-    justify-content:space-around;
-    grid-column-start:2;
-    grid-column-end:3;
+.writeup {
+    padding-left: 68px;
+    padding-right:68px;
 }
-#erase , #submit {
-    width:100px;
-    height:30px;
-    margin-top:50px;
-    border:0;
-    cursor:pointer;
-    color:rgb(252, 252, 252);
-    font-size:16px;
-    border-radius:25px;
+.writeup>h1 {
+    color:#f1f5f9;
 }
-#submit {
-    background-color:green;
+.writeup>p {
+    color:rgb(177, 177, 177);
 }
-#erase {
-    background-color:red;
+.polka1, .polka2 {
+   
+    height:110px;
+    width:230px;
+    background: rgb(30 ,41, 59);
+    background-image:
+        radial-gradient(rgb(51 ,65, 85) 20%, transparent 0), 
+        radial-gradient(rgb(51 ,65, 85) 20%, transparent 0);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    
 }
-#submit:hover , #erase:hover {
-    background-color:white;
-    border:solid 1px ;
+.polka1 {
+    position: absolute;
+    left:50%;
+    top:0;
 }
-#submit:hover {
-    border-color:green;
-    color:green;
+.polka2 {
+    position:absolute;
+    right:0;
+    top:calc(100vh - 110px);
+    transform: rotate(180deg);
 }
-#erase:hover {
-    border-color:red;
-    color:red;
+.logo {
+    margin-bottom:32px;
 }
+.logo p {
+    font-family: 'Dancing Script', cursive;
+    font-size:18px;
+    margin:0;
+    padding:0;
+    color:rgb(52, 44, 104);
+}
+.logo h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 64px;
+    margin:0;
+    padding:0;
+    color:#1E293B;
+}
+/* 
+dark 30 41 59
+51 65 85
+627898
+*/

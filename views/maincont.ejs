@@ -3,75 +3,171 @@
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/maincontent.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr.Dr.</title>
+    <title>Record | Doc.</title>
 </head>
 <body>
 <div class="wrapper">
-    
-    <div id="account">
-        <div class="logo"><img src="" alt=""></div>
-        <div class="account-info">
-            <p><%= username%></p>
-            <p><%= email%></p>
+    <div class="account" id="bar2">
+        <div id="account">
+            <div class="logo">
+                <a href="/user/record"><h1>Doc.</h1></a>
+                <p>In Service Of Heroes</p>
+            </div>
+            <div class="account-info">
+                <div class="dp">
+                    
+                </div><hr class="dotted" width="60%">
+                <div class="userinfo">
+                    <p><%= username%></p>
+                    <p><%= email%></p>
+                </div><hr class="dotted" width="60%">
+            </div>
         </div>
-        
-        </div>
-    <div id="border1"></div>
 
-    <div class="menu-record">
         <div id="menu">
             <ul id="main-nav">
-                <li><a href="/newPatient">New Patient</a></li>
-
-                <li><a href="/Profile">Profile</a></li>
-                <li><a href="/lastPatient">Last Patient</a></li>
-                <li><a href="/statastics">Stats</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-                <li><a href="/help">Help</a></li>
+                <li><a href="/user/profile">Profile</a></li>
+                <li><a href="/user/statastics/">Stats</a></li>
+                <li><a href="/user/setting">Settings</a></li>
+                <li><a href="/user/help">Help</a></li>
             </ul>
             <div id="border2"></div>
         </div>
-    
-        
+    </div>
+ 
 
+    <div class="menu-record">
         <div id="record">
 
+            <!-- <label for="visit">Visit Index &nbsp;:&nbsp;</label>
+            <input type="number" id="visit" name="visit"> 
+                        fieldList = JSON.parse(fieldList);
+          -->
+
             <form action="/user/record" method="POST">
-                <label for="pname">Patient Name &nbsp;:&nbsp;</label>
-                <input type="text" name="pname">
-                
-                <label for="disease">Disease &nbsp;:&nbsp;</label>
-                <input type="text" name="disease">
-                
-              
-                <label for="age">Patient Age &nbsp;:&nbsp;</label>
-                <input type="number" name="age" id="age">
-                
-                <label for="visit">Visit Index &nbsp;:&nbsp;</label>
-                <input type="number" id="visit" name="visit">
 
-                
-                <label for="cure">Treatment &nbsp;:&nbsp;</label>
-                <textarea id="cure" name="cure" cols="50" rows="10"></textarea>
+                <h2>Record </h2>
 
-                <label for="last-visit">Last Visit &nbsp;:&nbsp;</label>
-                <input type="date" name="lvisit">
+                <% 
+                    if (fieldList) {
+                %>
+                <%
+                        var inputType = '';    
+                        for (var obj of fieldList) {
+                            inputType = obj.COLUMN_TYPE;
+                %>
+                            <label for=
+                                <%= obj.COLUMN_NAME %>
+                            ><%= obj.COLUMN_NAME %> :</label>
+                <%
+                            switch (inputType) {
+                                case 'date' : 
+                %>
+                                    <input type="date" 
+                                    class="date"
+                                    name=
+                                    <%= obj.COLUMN_NAME %> 
+                                    id=
+                                        <%= obj.COLUMN_NAME %>
+                                    >
+                <%
+                                break;
+                                case 'varchar(255)' :
+                %>
+                                    <textarea name=
+                                    <%= obj.COLUMN_NAME %>
+                                    id=
+                                    <%= obj.COLUMN_NAME %>
+                                    cols="30" rows="10">
+                                    </textarea>
+                <%
+                                break;
+                                case 'varchar(90)' : 
+                %>
+                                    <textarea name=
+                                    <%= obj.COLUMN_NAME %>
+                                    id=
+                                    <%= obj.COLUMN_NAME %>
+                                    cols="30" rows="10">
+                                    </textarea>
+                <%
+                                break;
+                                case 'varchar(30)' :
+                %>
+                                    <input type="text" 
+                                    name=
+                                    <%= obj.COLUMN_NAME %>
+                                    id=
+                                        <%= obj.COLUMN_NAME %>
+                                    >
+                <%
+                                break;
+                                case 'varchar(15)' :
+                %>
+                                    <input type="text" 
+                                    name=
+                                    <%= obj.COLUMN_NAME %>
+                                    id=
+                                        <%= obj.COLUMN_NAME %>
+                                    >
+            
+                <%
+                                break;
+                                case 'int' :
+                %>
+                                    <input type="number" 
+                                    name=
+                                    <%= obj.COLUMN_NAME %>
+                                    id=
+                                        <%= obj.COLUMN_NAME %>
+                                    >
+                <%
+
+                            }
+                        }
+                    }
+                %>
+                <!-- <div class="pdetail">
+                    <label class="pdetail-label" for="pname">Patient Name &nbsp;:&nbsp;</label>
+                    <input type="text" name="pname">
+                    
+                    <label id="disease-label" for="disease">Disease &nbsp;:&nbsp;</label>
+                    <input type="text" name="disease">
+                    
+                  
+                    <label class="pdetail-label" for="age">Patient Age &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</label>
+                    <input type="number" name="age" id="age">
+                      
+                </div>
                 
-                <label for="next-visit">Next Visit &nbsp;:&nbsp;</label>
-                <input type="date" name="nvisit">
+                
+                <label for="cure" class="cure pdetail-label">Treatment &nbsp;:&nbsp;</label>
+                <textarea id="cure" class="cure pdetail-label" name="cure" cols="50" rows="8"></textarea>
+
+                <div class="date">
+                    <label for="last-visit">Last Visit &nbsp;:&nbsp;</label>
+                    <input type="date" name="lvisit">
+                    <label for="next-visit"  class="pdetail-label" >Next Visit &nbsp;:&nbsp;</label>
+                    <input type="date" name="nvisit" id="nvisit">
+                </div>
+            -->
 
 
                 <div id="form-btn">
                     <button id="erase" type="reset">Erase</button>
 
                     <button id="submit" type="submit">Save</button>
-                </div>
+                </div> 
+
+                
 
             </form>
         
@@ -79,6 +175,6 @@
         </div>
     </div>
 </div>
-    <link rel="javascript/text" href="./uijs/script.js">
+    <!-- <link rel="javascript/text" href="../public/javascripts/ui.js"> -->
 </body>
 </html>

@@ -47,30 +47,39 @@
     <div class="menu-record">
         <div class="data">
             <div class="options">
-                <h2>Profile </h2>
-                <div>
-                    <h4>Connection</h4>
-                    <form action="profile/connect">
-                        <label for="rei">Mate : </label>
-                        <input type="text" id="rei" name="rei">
-                        <button type="submit">Request</button>
-                    </form>
-                </div>
-                <div>
-                    <h4>Pending Conections</h4>
-                    <div class="pending-req">
-                    
-                        <% if (pendCon != ' ') { %>
-                            <p><%= pendCon %> want to make connection with you</p>
-                        <% } %>
+                <h2>Profile </h2><br>
+                
+
+                    <div>
+                        <h4>Connection</h4>
+                        <form action="profile/connect">
+                            <label for="rei">Mate : </label>
+                            <input type="text" id="rei" name="rei"><br>
+                            <button type="submit" class="p" >Request</button>
+                        </form>
                     </div>
-                    <a href="profile/accept">
-                        <button id="add" type="submit">Accept</button>
-                    </a>
-                    <a href="profile/reject">
-                        <button id="remove" type="submit">Reject</button>
-                    </a>
-                </div>
+                    <% if (pendCon != ' ') { %>
+                        <div>
+                                <h4>Pending Conections</h4><br>
+                                <div class="pending-req">
+                                    <p><%= pendCon %> want to make connection with you</p>
+                                </div>
+                            <a href="profile/accept">
+                                <button id="add" class="p" type="submit">Accept</button>
+                            </a>
+                            <a href="profile/reject">
+                                <button id="remove" class="n" type="submit">Reject</button>
+                            </a>
+                        </div>
+                    <% } %>
+
+                    <div>
+                        <h4>Set Picture</h4>
+                        <p>select or drag and drop image</p>
+                        <input type="file">
+                        <a href="profile/setimg"></a>
+                    </div>
+                
                 <div>
                 </div>
             </div>

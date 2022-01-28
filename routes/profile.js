@@ -5,7 +5,7 @@ app.use(cookieParser('dr.server'))
 const jwt = require('jsonwebtoken')
 var user = require('../scripts/userInfo')
 var dbConnection = require('../scripts/db').dbConnection
-
+var formidable = require('formidable')
 var secret = "dr.server"
 // var user = {
 //     username:'',
@@ -77,6 +77,13 @@ router.get('/reject',(req,res,next)=>{
     })  
 },(req,res,next)=>{
     res.render('profile',user)
+})
+
+router.get('/setimg',(req,res,next)=>{
+    var form = new formidable.IncomingForm();
+    form.parse(req,(err,fields,files)=>{
+        console.log(files)
+    })
 })
 
 module.exports = router;

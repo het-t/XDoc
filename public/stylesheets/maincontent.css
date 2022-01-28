@@ -26,7 +26,7 @@ input {
 textarea {
     width:50%;
 }
-input[type=text], input[type=password], input[type=date], input[type=number], textarea  {
+input[type=text], input[type=date], input[type=number], textarea  {
     margin:12px 0;
     padding: 7px 8px;
     border: 1px solid rgb(203, 213, 225);
@@ -34,7 +34,7 @@ input[type=text], input[type=password], input[type=date], input[type=number], te
     font-family: 'Inter', sans-serif;
     margin-left:12px;
 }
-input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=number]:focus, textarea:focus {
+input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, textarea:focus {
     outline: none;
     transition: 300ms;
     border: 1px solid #1d283a93;
@@ -43,7 +43,7 @@ label {
     padding-top :18px;
     padding-left:12px;
 }
-form-btn {
+.form-btn {
     display: flex;
     margin:30px auto; 
 }

@@ -17,6 +17,26 @@ h2 {
     height:100%;
     padding:40px;
     background-color:white;
-    display: flex;
-    flex-direction: column;
+    display: grid !important;
+    grid-template-columns: auto auto;
+    grid-template-rows: 80px auto;
+}
+label {
+    margin-left: 12px;
+}
+input[type=text] {
+    margin:12px 0;
+    padding: 7px 8px;
+    border: 1px solid rgb(203, 213, 225);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    margin-left:12px;
+}
+input[type=text]:focus {
+    outline: none;
+    transition: 300ms;
+    border: 1px solid #1d283a93;
+}
+.p ,.n {
+    margin-left: 12px !important;
 }

@@ -105,3 +105,35 @@ a img {
     padding-top: -8px;
     padding-bottom: 8px;
 }
+.p , .n {
+    margin:20px;
+    width:100px;
+    padding:8px;
+    border-top-left-radius: 90000px;
+    border-top-right-radius: 90000px;
+    border-bottom-left-radius: 90000px;
+    border-bottom-right-radius: 90000px;
+    border:1px solid white;
+}
+.n {
+    color:white;
+    background-color: red;
+}
+.n:hover {
+    transition: 300ms;
+    background-color: white;
+    color:red;
+    border: 1px solid red;
+    cursor:pointer;
+}
+.p {
+    color:white;
+    background-color: green;
+}
+.p:hover {
+    transition: 300ms;
+    background-color: white;
+    color:green;
+    border: 1px solid green;
+    cursor:pointer;
+}

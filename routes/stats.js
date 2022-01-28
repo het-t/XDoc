@@ -44,7 +44,8 @@ searchRouter.get('/search',(req, res, next)=>{
 
     db.filter(user.username, pid, lvisit, nvisit)
     .then((results)=>{
-        user.records =  results[0];
+        console.log(results)
+        // user.records =  results[0];
         res.render("stats" , user)
     }, (err)=>{
         console.log(err)

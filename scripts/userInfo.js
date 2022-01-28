@@ -5,7 +5,8 @@ var user = {
     email:'',
     token:'',
     records:'',
-    fieldList:''
+    fieldList:'',
+    pendCon:''
 }
 
 module.exports = user;

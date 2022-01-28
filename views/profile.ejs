@@ -48,6 +48,31 @@
         <div class="data">
             <div class="options">
                 <h2>Profile </h2>
+                <div>
+                    <h4>Connection</h4>
+                    <form action="profile/connect">
+                        <label for="rei">Mate : </label>
+                        <input type="text" id="rei" name="rei">
+                        <button type="submit">Request</button>
+                    </form>
+                </div>
+                <div>
+                    <h4>Pending Conections</h4>
+                    <div class="pending-req">
+                    
+                        <% if (pendCon != ' ') { %>
+                            <p><%= pendCon %> want to make connection with you</p>
+                        <% } %>
+                    </div>
+                    <a href="profile/accept">
+                        <button id="add" type="submit">Accept</button>
+                    </a>
+                    <a href="profile/reject">
+                        <button id="remove" type="submit">Reject</button>
+                    </a>
+                </div>
+                <div>
+                </div>
             </div>
         </div>
     </div>

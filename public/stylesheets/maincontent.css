@@ -6,7 +6,6 @@
     height: 100vh !important;
 }
 form {
-    /* width:100%; */
     height: auto;
     display: flex;
     flex-direction: column;
@@ -27,7 +26,7 @@ input {
 textarea {
     width:50%;
 }
-input[type=text], input[type=date], input[type=number], textarea  {
+input[type=text], input[type=password], input[type=date], input[type=number], textarea  {
     margin:12px 0;
     padding: 7px 8px;
     border: 1px solid rgb(203, 213, 225);
@@ -35,33 +34,15 @@ input[type=text], input[type=date], input[type=number], textarea  {
     font-family: 'Inter', sans-serif;
     margin-left:12px;
 }
-input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, textarea:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=date]:focus, input[type=number]:focus, textarea:focus {
     outline: none;
     transition: 300ms;
     border: 1px solid #1d283a93;
 }
-/* input[type=date] {
-    height:50px;
-}
-.date {
-    display:flex;
-} */
 label {
     padding-top :18px;
     padding-left:12px;
 }
-/* .pdetail {
-    display:grid;
-    grid-template-columns: 1fr 2fr 1fr 2fr;
-    grid-gap:10px 10px;
-}
-.cure {
-    margin-top:10px;
-}
-#nvisit {
-    margin-left:54px;
-}
-*/
 form-btn {
     display: flex;
     margin:30px auto; 
@@ -98,9 +79,3 @@ form-btn {
     border: 1px solid green;
     cursor:pointer;
 }
-/* #disease-label {
-    text-align: right;
-}
-.pdetail-label {
-    margin-left:15px;
-} */

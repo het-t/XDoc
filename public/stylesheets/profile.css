@@ -37,6 +37,16 @@ input[type=text]:focus {
     transition: 300ms;
     border: 1px solid #1d283a93;
 }
+/* input[type=file] {
+    display: none;
+} */
+input[type=text] {
+    color:aqua;
+}
 .p ,.n {
     margin-left: 12px !important;
+}
+#dpimage {
+    height:100%;
+    width:100%;
 }

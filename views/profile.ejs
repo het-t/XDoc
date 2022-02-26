@@ -23,8 +23,9 @@
             </div>
             <div class="account-info">
                 <div class="dp">
-                    
-                </div><hr class="dotted" width="60%">
+                    <img id="dpimage" src="./files/test9.jpeg">
+                </div>
+                <hr class="dotted" width="60%">
                 <div class="userinfo">
                     <p><%= username%></p>
                     <p><%= email%></p>
@@ -72,14 +73,15 @@
                             </a>
                         </div>
                     <% } %>
-
+                
                     <div>
                         <h4>Set Picture</h4>
                         <p>select or drag and drop image</p>
-                        <input type="file">
-                        <a href="profile/setimg"></a>
+                        <form id="dpform" enctype="multipart/form-data" action="profile/setimg" method="post">
+                            <input type="file" name="dp" id="dp">
+                            <button type="submit" class="p" >Change</button>
+                        </form>
                     </div>
-                
                 <div>
                 </div>
             </div>

@@ -6,6 +6,9 @@ const jwt = require('jsonwebtoken')
 var user = require('../scripts/userInfo')
 var dbConnection = require('../scripts/db').dbConnection
 var formidable = require('formidable')
+var path = require('path');
+const { dirname } = require('path');
+const fs = require("fs");
 var secret = "dr.server"
 // var user = {
 //     username:'',
@@ -79,11 +82,23 @@ router.get('/reject',(req,res,next)=>{
     res.render('profile',user)
 })
 
-router.get('/setimg',(req,res,next)=>{
+router.post('/setimg',(req,res,next)=>{
     var form = new formidable.IncomingForm();
-    form.parse(req,(err,fields,files)=>{
-        console.log(files)
+    form.on('fileBegin',(dp,file) => {
+        var filename = user.username + ".jpeg"
+        fs.writeFile(filename, "", (err)=>{
+            if (err) console.log(err)
+        })
+        file.filepath = path.join(__dirname,"../","public","files",filename)
     })
+    form.parse(req,(err,fields,files)=>{
+        if (err) console.log(err)
+        else {
+            next()
+        }
+    })
+},(req,res,next)=>{
+    res.render('profile',user)
 })
 
 module.exports = router;

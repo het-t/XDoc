@@ -9,7 +9,7 @@ var statsRoutes = require('./stats.js')
 var profileRoutes = require('./profile.js')
 var settingRoutes = require('./setting')
 var user = require('../scripts/userInfo');
-
+var fs = require('fs')
 app.use(cookieParser());
 
 // var stats = require('./stats.js').router;
@@ -114,10 +114,11 @@ router.post('/login', (req, res, next) => {
       () => {
         user.username = fields.username;
         user.email = fields.password;
-
+        
         var payload = {
           username:user.username,
-          email:user.email
+          email:user.email,
+          dp:user.dp
         }
         var token = jwt.sign(payload, secret)
         user.token = token

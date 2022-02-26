@@ -1,12 +1,14 @@
 var express = require("express");
 
+
 var user = {
     username:'',
     email:'',
     token:'',
     records:'',
     fieldList:'',
-    pendCon:''
+    pendCon:'',
+    dp:''
 }
 
 module.exports = user;

@@ -1,4 +1,4 @@
-var db = require('mysql')
+var db = require('mysql2')
 var http = require('http')
 var express = require('express')
 const res = require('express/lib/response')

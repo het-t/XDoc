@@ -15,7 +15,7 @@ var dbConnection = db.createConnection({
 
 dbConnection.connect((err)=> {
     if(err) {
-        console.log("db connection error")
+        console.log(err)
     }
     else { 
         console.log("db connected")

@@ -8,8 +8,6 @@
     height:100vh;
     padding:40px ;
     box-sizing:border-box;
-    /* display: flex;
-    flex-direction: column; */
 }
 h2 {
     padding:0;
@@ -19,6 +17,36 @@ h2 {
     height:100%;
     padding:40px;
     background-color:white;
-    display: flex;
-    flex-direction: column;
+    display: grid !important;
+    grid-template-columns: auto auto;
+    grid-template-rows: 80px auto;
+}
+label {
+    margin-left: 12px;
+}
+input[type=text] {
+    margin:12px 0;
+    padding: 7px 8px;
+    border: 1px solid rgb(203, 213, 225);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    margin-left:12px;
+}
+input[type=text]:focus {
+    outline: none;
+    transition: 300ms;
+    border: 1px solid #1d283a93;
+}
+/* input[type=file] {
+    display: none;
+} */
+input[type=text] {
+    color:aqua;
+}
+.p ,.n {
+    margin-left: 12px !important;
+}
+#dpimage {
+    height:100%;
+    width:100%;
 }
